@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "tzinfo-data"
 
 # Add bootstrap for easy CSS styling
-gem 'bootstrap', '~>4.0.0'
+gem 'bootstrap', '~>4.3.1'
 
 gem 'materialize-sass'
 
