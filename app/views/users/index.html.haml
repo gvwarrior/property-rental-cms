@@ -1,0 +1,28 @@
+-#  This file is app/views/movies/index.html.haml
+%h1 User Profile
+
+.card.mt-3
+  .card-header
+    .p.font-weight-bold Information
+  .card-body
+    .row.text-center
+      %table.table.table-hover
+        %tbody
+          %tr
+            %td
+              .p.font-weight-bold  Name
+            %td
+              %p #{@current_user.name}
+          %tr
+            %td
+              .p.font-weight-bold  Email
+            %td #{@current_user.email}
+          %tr
+            %td
+              .p.font-weight-bold  Created At
+            %td{:colspan => "2"} #{@current_user.created_at}
+          %tr
+            %td
+              .p.font-weight-bold  Updated At
+            %td{:colspan => "2"}
+              #{@current_user.updated_at}

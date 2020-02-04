@@ -1,0 +1,20 @@
+.container.h-auto
+  .row
+    %div.col-md-12.min-vh-100.d-flex.flex-column.justify-content-center
+      .row
+        %div.col-lg-6.col-md-8.mx-auto
+          .card
+            .card-header.text-center
+              %h3 Login
+            .card-body.text-center
+              = form_tag login_create_path do
+
+                = label :user, :email, 'Email'
+                = email_field :user, 'email', :id=> 'loginEmail'
+                %p
+                = label :user, :password, 'Password'
+                = password_field :user, 'password', :id=> 'loginPassword'
+                %p
+                = submit_tag 'Login to my account', :id=> 'login_submit'
+
+              = link_to 'Sign-up for an account', new_user_path, :id => 'signup'

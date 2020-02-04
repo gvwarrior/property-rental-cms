@@ -1,0 +1,41 @@
+%head
+
+  = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+  %title Property Details
+
+
+.container.h-auto
+  .row
+    %div.col-md-12.min-vh-100.d-flex.flex-column.justify-content-center
+      .row
+        %div.col-lg-6.col-md-8.mx-auto
+          .card
+            .card-header.text-center
+              %h3 Contact Us
+            .card-body.text-center
+              = form_tag messages_path, :method => :post do
+                .field
+                = label :message, :name, 'Name'
+                %br/
+                = text_field :message, 'name'
+                .field
+
+                = label :message, :phone, 'Phone'
+                %br/
+                = text_field :message, 'phone'
+                .field
+
+                = label :message, :email, 'EMail'
+                %br/
+                = text_field :message, 'email'
+                .field
+                = label :message, :subject, 'Subject'
+                %br/
+                = text_field :message, 'subject'
+                .field
+                = label :message, :body, 'Message'
+                %br/
+                = text_field  :message, 'body'
+                %p
+                .actions
+                = submit_tag 'Send message'

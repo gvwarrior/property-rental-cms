@@ -1,0 +1,31 @@
+-#  This file is app/views/properties/index.html.haml
+%head
+  = stylesheet_link_tag 'index', 'media' => 'all', 'data-turbolinks-track' => true
+  = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+  %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/a73ffde100.js"}
+
+%body
+  -#.nav-bar
+  -#= render "shared/nav"
+
+  .container-fluid
+    .row.justify-content-center
+      .card.mb-3.text-center{:style => "max-width: 540px;"}
+        .row.no-gutters.justify-content-center
+          .col-md-4
+            %img.card-img{:alt => "...", :src => "#{@company_information.logoUrl}"}/
+          .col-md-8
+            .card-body
+              %h5.card-title #{@company_information.name}
+              %p.card-text We have years of satisfied customers and would love to have another - contact us with any of your questions and we're happy to help!
+        .row.no-gutters.justify-content-center
+          .col-md-12
+            %ul.list-group.list-group-flush
+              %li.list-group-item
+                .p.font-weight-bold Contact:
+                .p #{@company_information.phoneNumber}
+              %li.list-group-item
+                .p.font-weight-bold Address:
+                .p #{@company_information.address}
+
+

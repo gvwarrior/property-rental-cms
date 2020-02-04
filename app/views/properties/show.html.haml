@@ -1,0 +1,66 @@
+-# in app/views/properties/show.html.haml
+%head
+
+  = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+  %title Property Details
+
+-#.nav-bar
+-#  = render "shared/nav"
+
+
+.container.justify-content-center
+  .card.mt-3.mb-3
+    .row
+      .col-4.text-center
+        .div.pb-3
+        .h1 Property Details
+        .div.pb-3
+          .span.font-weight-bold Address
+          #{@property.address}
+        .p.pb-3
+          .span.font-weight-bold Price
+          $ #{@property.price}/mo
+        .p.pb-3
+          .span.font-weight-bold Sqft
+          #{@property.sqft} sqft
+        .p.pb-3
+          .span.font-weight-bold Bedrooms
+          #{@property.bedrooms}
+        .p.pb-3
+          %a
+            =button_to 'Back to Home Page', properties_path, :method => :get
+        .p.pb-3
+          %a
+            =button_to 'Schedule Visit', new_message_path, :method => :get
+      .col-8
+        %img.image#test-img{:src=>@property.url, :href => @property.url}
+  .card.mt-3
+    .card-header
+      .p.font-weight-bold Additional Details
+    .card-body
+      .row.text-center
+        %table.table.table-hover
+          %tbody
+            %tr
+              %td
+                .p.font-weight-bold  Address
+              %td
+                %p #{@property.address}
+            %tr
+              %td
+                .p.font-weight-bold  Price
+              %td $ #{@property.price} / month
+            %tr
+              %td
+                .p.font-weight-bold  Sqft
+              %td{:colspan => "2"} #{@property.sqft} sqft
+            %tr
+              %td
+                .p.font-weight-bold  Bedrooms
+              %td{:colspan => "2"}
+                #{@property.bedrooms}
+
+
+
+
+

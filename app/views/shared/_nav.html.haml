@@ -1,0 +1,58 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.shadow-lg
+  %a.navbar-brand.text-capitalize.font-weight-bold{:href => properties_path}
+    - if @company_information
+      #{@company_information.name}
+    - else
+      Unknown
+  %button.navbar-toggler{"aria-controls" => "navbarText", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarText", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarText.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        %a.nav-link{:href => properties_path}
+          Home
+          %span.sr-only (current)
+      %li.nav-item
+        %a.nav-link{:href => about_path} About
+      %li.nav-item
+        %a.nav-link{:href => new_message_path} Contact
+      - if @current_user
+        %li.nav-item
+          %div.nav-link=link_to "#{@current_user.name}'s Profile", users_url
+          //%a.nav-link{:href => users_path(@current_user)} Profile
+
+    - if @current_user
+      %a.btn.text-primary.bg-white.active.mr-3{"aria-pressed" => "true", :href => logout_path, :role => "button"}
+        Logout
+    - else
+      %a.btn.text-primary.bg-white.active.mr-3{"aria-pressed" => "true", :href => login_path, :role => "button"}
+        Login or Signup
+    -#%form.form-inline
+    -#  %button.btn.btn-outline-white{:type => "button"} Main button
+
+    -#%span.navbar-text
+    -#  Navbar text with an inline element
+
+
+
+
+  -#%a.navbar-brand.text-white.text-capitalize.font-weight-bold{:href => properties_path} rental properties
+  -#%button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+  -#  %span.navbar-toggler-icon
+  -#.div.collapse.navbar-collapse#navbarText
+  -#  %ul.navbar-nav.mr-auto
+  -#    %li.nav-item.active
+  -#      %a.nav-link.text-white{:href => properties_path}
+  -#        Home
+  -#        %span.sr-only (current)
+  -#    %li.nav-item
+  -#      %a.nav-link.text-white{:href => "#"} About
+  -#    %li.nav-item.dropdown
+  -#      -#TODO: Remove the "disabled" class from 'profile' when implementing the profile
+  -#      %a#navbarDropdown.nav-link.dropdown-toggle.text-white.disabled{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+  -#        Profile
+  -#      .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+  -#        %a.dropdown-item{:href => "#"} Sign In
+  -#        %a.dropdown-item{:href => "#"} Sign Up
+  -#        .dropdown-divider
+  -#        %a.dropdown-item{:href => "#"} Favorites

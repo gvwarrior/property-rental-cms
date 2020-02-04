@@ -1,0 +1,90 @@
+-#  This file is app/views/properties/index.html.haml
+%head
+  = stylesheet_link_tag 'index', 'media' => 'all', 'data-turbolinks-track' => true
+  = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+  %script{:crossorigin => "anonymous", :src => "https://kit.fontawesome.com/a73ffde100.js"}
+
+%body
+  -#.nav-bar
+  -#= render "shared/nav"
+
+  .container.text-dark.shadow
+  - @properties.each_slice(4) do |four_houses|
+    %div.row.justify-content-around
+      - four_houses.each do |house|
+        %a.custom-card{:href => property_path(house)}
+          .card.text-center.text-capitalize.m-4.shadow{:style => "width: 18rem;"}
+            %img.card-img-top#property-preview-img{:src => house.url}/
+            .card-header
+              .p #{house.address}
+            %ul.list-group.list-group-flush
+              %li.list-group-item #{number_to_currency(house.price, :precision => 0)} per Month
+              %table.table.table.table-light
+                %thead
+                  %tr
+                    %th.font-weight-bold.bg-light{:scope => "col"} Beds
+                    %th.font-weight-bold.bg-light{:scope => "col"} Baths
+                    %th.font-weight-bold.bg-light{:scope => "col"} Sqft
+                %tbody
+                  %tr
+                    %th.font-weight-light{:scope => "row"} #{house.bedrooms}
+                    %td.font-weight-light #{house.bathrooms}
+                    %td.font-weight-light #{house.sqft}
+
+
+        -#%div.row.justify-content-between
+        -#      %span.border-right.border-primary.p-2
+        -#        .p 1 bds
+        -#      %span.border-right.border-secondary.p-2
+        -#        .p 2 baths
+        -#      %span.p-2
+        -#        .p 1200 sqft
+
+            -#$#{house.price} / month
+          -#%ul.list-group.list-group-flush
+          -#  %li.list-group-item Cras justo odio
+          -#  %li.list-group-item Dapibus ac facilisis in
+          -#  %li.list-group-item Vestibulum at eros
+          .card-body
+            %a.card-link{:href => property_path(house)} More Info
+            %a.card-link{:href => "#"} Another link
+          %p.card-text
+            %small.text-muted Created #{ ((Time.now - house.created_at).to_i / 3600).to_i } day(s) ago
+
+        -#%div.col-sm-4.col-md-3.text-center
+        -#  %div.thumbnail
+        -#    %img.image{:src=>house.url}
+        -#    .div.address
+        -#      %i.fas.fa-home
+        -#      #{house.address}
+        -#    .div.price
+        -#      %i.fas.fa-dollar-sign
+        -#      #{house.price}/mo
+        -#    %div
+        -#      =button_to 'More Info', property_path(house), :method => :get
+
+
+-#%table#properties
+-#  - @properties.each do |object|
+-#    %tr
+-#      %td
+-#      -#%td{:align => "center", :valign => "center"}
+-#      %img{:src => object.url}/
+-#      %br/
+-#      #{object.price}
+-#      %br/
+-#      #{object.address}
+-#      %br/
+-#      #{object.sqft}
+      -#=button_to 'More Info', properties_path
+
+      -#%td
+      -#%div{:class=>'column'}
+      -#  %img{:src=>object.url}
+      -#  %div{:class=>'price'}
+      -#    #{object.price}
+      -#  %div{:class=>'address'}
+      -#    #{object.address}
+      -#  %div{:class=>'area'}
+      -#    #{object.sqft}
+      -#  %div{:class=>"moreinfo"}
